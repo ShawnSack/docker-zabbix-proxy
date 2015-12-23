@@ -48,7 +48,7 @@ RUN \
   rm -rf fping-3.10 && \
   rm -rf 3.10.tar.gz && \
   apt-get autoremove -y && apt-get clean && \
-  rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
+  rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Copy scripts, Monit config and Zabbix config into place
 COPY monitrc                     /etc/monit/monitrc
