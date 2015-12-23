@@ -28,12 +28,12 @@ RUN \
                      snmp-mibs-downloader \
                      sqlite3 \
                      libsqlite3-dev && \
-  ./bootstrap.sh
-  ./configure --prefix=/usr --enable-proxy --enable-ipv6 --with-net-snmp --with-sqlite3 --with-ssh2
-  make dbschema
-  make install
-  mkdir -p /var/lib/sqlite
-  sqlite3 /var/lib/sqlite/zabbix.db < database/sqlite3/schema.sql
+  ./bootstrap.sh && \
+  ./configure --prefix=/usr --enable-proxy --enable-ipv6 --with-net-snmp --with-sqlite3 --with-ssh2 && \
+  make dbschema && \
+  make install && \
+  mkdir -p /var/lib/sqlite && \
+  sqlite3 /var/lib/sqlite/zabbix.db < database/sqlite3/schema.sql && \
   wget https://github.com/schweikert/fping/archive/3.10.tar.gz && \
   tar -xvf 3.10.tar.gz && \
   cd fping-3.10/ && \
