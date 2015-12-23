@@ -57,8 +57,7 @@ COPY ./zabbix/zabbix_proxy.conf  /etc/zabbix/zabbix_proxy.conf
 
 # Fix permissions
 RUN chmod 755 /bin/docker-zabbix && \
-    chmod 600 /etc/monit/monitrc && \
-    chown zabbix:zabbix /var/lib/sqlite
+    chmod 600 /etc/monit/monitrc
 
 # Expose ports for
 # * 10051 zabbix_proxy
