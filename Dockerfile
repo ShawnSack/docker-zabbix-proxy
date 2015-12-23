@@ -10,14 +10,14 @@ ENV ZABBIX_VERSION trunk
 # Install Zabbix and dependencies
 RUN \
   apt-get update && apt-get install -y software-properties-common wget && \
-  apt-add-repository multiverse && apt-get update && \
+  apt-add-repository universe multiverse && apt-get update && \
   apt-get install tar svn gcc automake make nmap traceroute iptstate wget \
               net-snmp-devel net-snmp-libs net-snmp net-snmp-perl iksemel \
-              net-snmp-python net-snmp-utils java-1.8.0-openjdk python-pip \
-              java-1.8.0-openjdk-devel mariadb-devel libxml2-devel gettext \
-              libcurl-devel OpenIPMI-devel mysql iksemel-devel libssh2-devel \
+              net-snmp-python net-snmp-utils python-pip \
+              mariadb-devel libxml2-devel gettext \
+              OpenIPMI-devel iksemel-devel libssh2-devel \
               unixODBC unixODBC-devel mysql-connector-odbc postgresql-odbc \
-              openldap-devel net-tools snmptt sudo rubygems && \
+              openldap-devel net-tools snmptt sudo && \
   svn co svn://svn.zabbix.com/${ZABBIX_VERSION} /usr/local/src/zabbix && \
   cd /usr/local/src/zabbix && \
   #wget http://repo.zabbix.com/zabbix/${ZABBIX_VERSION}/ubuntu/pool/main/z/zabbix-release/zabbix-release_${ZABBIX_VERSION}-1+trusty_all.deb \
