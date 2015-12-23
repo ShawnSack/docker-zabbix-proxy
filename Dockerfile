@@ -49,7 +49,6 @@ RUN \
   rm -rf 3.10.tar.gz && \
   apt-get autoremove -y && apt-get clean && \
   rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
-  mkdir -p /var/lib/sqlite
 
 # Copy scripts, Monit config and Zabbix config into place
 COPY monitrc                     /etc/monit/monitrc
