@@ -10,7 +10,7 @@ ENV ZABBIX_VERSION trunk
 # Install Zabbix and dependencies
 RUN \
   apt-get update && apt-get install -y software-properties-common wget && \
-  apt-add-repository universe multiverse && apt-get update && \
+  apt-add-repository universe && apt-add-repository multiverse && apt-get update && \
   apt-get install tar svn gcc automake make nmap traceroute iptstate wget \
               net-snmp-devel net-snmp-libs net-snmp net-snmp-perl iksemel \
               net-snmp-python net-snmp-utils python-pip \
