@@ -5,7 +5,7 @@ FROM ubuntu:14.04
 
 MAINTAINER Nickolai Barnum <nbarnum@users.noreply.github.com>
 
-ENV ZABBIX_VERSION 2.4
+ENV ZABBIX_VERSION trunk
 
 # Install Zabbix and dependencies
 RUN \
