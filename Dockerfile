@@ -62,6 +62,12 @@ COPY ./zabbix/zabbix_proxy.conf  /etc/zabbix/zabbix_proxy.conf
 # Fix permissions
 RUN chmod 755 /bin/docker-zabbix && \
     chmod 600 /etc/monit/monitrc && \
+    chown zabbix:zabbix /usr/sbin/fping && \
+    chown zabbix:zabbix /usr/sbin/fping6 && \
+    chmod 710 /usr/sbin/fping && \
+    chome 710 /usr/sbin/fping6 && \
+    chmod ug+s /usr/sbin/fping && \
+    chmod ug+s /usr/sbin/fping6 && \
     chown zabbix:zabbix /var/lib/sqlite && \
     chown zabbix:zabbix /var/lib/sqlite/zabbix.db && \
     chown zabbix:zabbix /var/run/zabbix && \
