@@ -2,5 +2,5 @@ set init
 
 check process zabbix-proxy with pidfile /var/run/zabbix/zabbix_proxy.pid
   every 2 cycles
-	start program = "/usr/sbin/service zabbix-proxy start"
-	stop program = "/usr/sbin/service zabbix-proxy stop"
+	start program = "zabbix_proxy start"
+	stop program = "zabbix_proxy stop"
