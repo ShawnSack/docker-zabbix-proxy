@@ -9,7 +9,6 @@ ENV ZABBIX_VERSION trunk
 
 # Install Zabbix and dependencies
 RUN \
-  addgroup zabbix && \
   adduser zabbix zabbix && \
   apt-get update && apt-get install -y software-properties-common wget && \
   apt-add-repository universe && apt-add-repository multiverse && apt-get update && \
