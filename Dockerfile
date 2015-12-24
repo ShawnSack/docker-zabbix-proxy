@@ -63,6 +63,7 @@ COPY ./zabbix/zabbix_proxy.conf  /etc/zabbix/zabbix_proxy.conf
 RUN chmod 755 /bin/docker-zabbix && \
     chmod 600 /etc/monit/monitrc && \
     chown zabbix:zabbix /var/lib/sqlite && \
+    chown zabbix:zabbix /var/lib/sqlite/zabbix.db && \
     chown zabbix:zabbix /var/run/zabbix && \
     chown zabbix:zabbix /var/log/zabbix
 
