@@ -65,7 +65,7 @@ RUN chmod 755 /bin/docker-zabbix && \
     chown zabbix:zabbix /usr/sbin/fping && \
     chown zabbix:zabbix /usr/sbin/fping6 && \
     chmod 710 /usr/sbin/fping && \
-    chome 710 /usr/sbin/fping6 && \
+    chmod 710 /usr/sbin/fping6 && \
     chmod ug+s /usr/sbin/fping && \
     chmod ug+s /usr/sbin/fping6 && \
     chown zabbix:zabbix /var/lib/sqlite && \
