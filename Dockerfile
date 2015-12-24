@@ -9,6 +9,8 @@ ENV ZABBIX_VERSION trunk
 
 # Install Zabbix and dependencies
 RUN \
+  addgroup zabbix && \
+  adduser -g zabbix zabbix && \
   apt-get update && apt-get install -y software-properties-common wget && \
   apt-add-repository universe && apt-add-repository multiverse && apt-get update && \
   apt-get install -y tar subversion gcc automake make nmap traceroute iptstate wget \
@@ -18,8 +20,8 @@ RUN \
               libssh2-1-dev \
               unixODBC unixODBC-dev \
               net-tools snmptt sudo && \
-  svn co svn://svn.zabbix.com/${ZABBIX_VERSION} /usr/local/src/zabbix && \
-  cd /usr/local/src/zabbix && \
+  svn co svn://svn.zabbix.com/${ZABBIX_VERSION} /usr/src/zabbix && \
+  cd /usr/src/zabbix && \
   #wget http://repo.zabbix.com/zabbix/${ZABBIX_VERSION}/ubuntu/pool/main/z/zabbix-release/zabbix-release_${ZABBIX_VERSION}-1+trusty_all.deb \
        #-O /tmp/zabbix-release_${ZABBIX_VERSION}-1+trusty_all.deb  && \
   #dpkg -i /tmp/zabbix-release_${ZABBIX_VERSION}-1+trusty_all.deb && \
@@ -57,7 +59,8 @@ COPY ./zabbix/zabbix_proxy.conf  /etc/zabbix/zabbix_proxy.conf
 
 # Fix permissions
 RUN chmod 755 /bin/docker-zabbix && \
-    chmod 600 /etc/monit/monitrc
+    chmod 600 /etc/monit/monitrc && \
+    chown zabbix:zabbix /var/lib/sqlite
 
 # Expose ports for
 # * 10051 zabbix_proxy
