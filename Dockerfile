@@ -50,6 +50,8 @@ RUN \
   rm -rf fping-3.10 && \
   rm -rf 3.10.tar.gz && \
   apt-get autoremove -y && apt-get clean && \
+  mkdir /var/run/zabbix && \
+  mkdir /var/log/zabbix && \
   rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Copy scripts, Monit config and Zabbix config into place
@@ -60,7 +62,9 @@ COPY ./zabbix/zabbix_proxy.conf  /etc/zabbix/zabbix_proxy.conf
 # Fix permissions
 RUN chmod 755 /bin/docker-zabbix && \
     chmod 600 /etc/monit/monitrc && \
-    chown zabbix:zabbix /var/lib/sqlite
+    chown zabbix:zabbix /var/lib/sqlite && \
+    chown zabbix:zabbix /var/run/zabbix && \
+    chown zabbix:zabbix /var/log/zabbix
 
 # Expose ports for
 # * 10051 zabbix_proxy
