@@ -9,6 +9,8 @@ ENV ZABBIX_VERSION trunk
 
 # Install Zabbix and dependencies
 RUN \
+  groupadd zabbix && \
+  useradd -g zabbix zabbix && \
   apt-get update && apt-get install -y software-properties-common wget && \
   apt-add-repository universe && apt-add-repository multiverse && apt-get update && \
   apt-get install -y tar subversion gcc automake make nmap traceroute iptstate wget \
