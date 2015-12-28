@@ -11,6 +11,7 @@ ENV ZABBIX_VERSION trunk
 RUN \
   groupadd zabbix && \
   useradd -g zabbix zabbix && \
+  usermod -a -G zabbix zabbix && \
   apt-get update && apt-get install -y software-properties-common wget && \
   apt-add-repository universe && apt-add-repository multiverse && apt-get update && \
   apt-get install -y tar subversion gcc automake make nmap traceroute iptstate wget \
@@ -62,10 +63,10 @@ COPY ./zabbix/zabbix_proxy.conf  /etc/zabbix/zabbix_proxy.conf
 # Fix permissions
 RUN chmod 755 /bin/docker-zabbix && \
     chmod 600 /etc/monit/monitrc && \
-    chown zabbix:zabbix /usr/sbin/fping && \
-    chown zabbix:zabbix /usr/sbin/fping6 && \
-    chmod 710 /usr/sbin/fping && \
-    chmod 710 /usr/sbin/fping6 && \
+    chown root:zabbix /usr/sbin/fping && \
+    chown root:zabbix /usr/sbin/fping6 && \
+    chmod 6755 /usr/sbin/fping && \
+    chmod 6755 /usr/sbin/fping6 && \
     chmod ug+s /usr/sbin/fping && \
     chmod ug+s /usr/sbin/fping6 && \
     chown zabbix:zabbix /var/lib/sqlite && \
